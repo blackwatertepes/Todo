@@ -1,0 +1,15 @@
+%h1 To Do
+
+%ol.tasks
+  - @tasks.each do |task|
+    %li.task
+      - if task.complete?
+        = link_to task.name, task_uncomplete_path(task), class: :complete
+      - else
+        = link_to task.name, task_complete_path(task)
+
+      = link_to "X", task_path(task), method: :delete
+
+= form_for @task do |f|
+  = f.text_field :name
+  = f.submit :Create
