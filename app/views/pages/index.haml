@@ -8,7 +8,7 @@
       - else
         = link_to task.name, task_complete_path(task)
 
-      = link_to "X", task_path(task), method: :delete
+      = link_to "X", task_path(task), method: :delete, class: [:btn, :delete]
 
 = form_for @task do |f|
   = f.text_field :name
