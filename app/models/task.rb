@@ -2,7 +2,7 @@ class Task < ActiveRecord::Base
   has_ancestry orphan_strategy: :destroy
   acts_as_list
 
-  attr_accessible :completed, :name, :parent_id, :stage_id
+  attr_accessible :completed, :name, :parent_id, :stage
 
   has_many :prereqs
   has_many :reqs, through: :prereqs

@@ -1,21 +1,18 @@
-%li.task.clearfix
-  - if task.complete?
-    = link_to task.name, task_uncomplete_path(task), class: [:complete, task.status]
-  - else
-    = link_to task.name, task_complete_path(task.id), class: [task.status]
+%tr.task
+  %td
+    - if task.complete?
+      = link_to task.name, task_uncomplete_path(task), class: [:complete, task.status]
+    - else
+      = link_to task.name, task_complete_path(task.id), class: [task.status]
+  
+  %td
+    = task.stage.name
 
-  .controls
-    -# = form_for @task do |f|
-    -#   = f.number_field :parent_id, value: task.id, type: :hidden
-    -#   .input-append
-    -#     = f.text_field :name
-    -#     = f.submit :Create, class: :btn
+  %td
+    = task.children.count
 
-    = link_to "UP", task_up_path(task), class: [:btn, "btn-mini"]
-    = link_to "Down", task_down_path(task), class: [:btn, "btn-mini"]
-    = link_to "X", task_path(task), method: :delete, class: [:btn, "btn-mini", :delete]
-
-  - if task.has_children?
-    %ul
-      - task.children.order(:position).each do |child_task|
-        = render partial: "tasks/task", locals: {task: child_task}
+  %td
+    .controls
+      = link_to "UP", task_up_path(task), class: [:btn, "btn-mini"]
+      = link_to "Down", task_down_path(task), class: [:btn, "btn-mini"]
+      = link_to "X", task_path(task), method: :delete, class: [:btn, "btn-mini", :delete]

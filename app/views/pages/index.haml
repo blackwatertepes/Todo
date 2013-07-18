@@ -1,6 +1,16 @@
-%h1 To Do
+%h1 ToDo
 
-%ul.tasks
+%table.tasks.table.table-striped
+  %thead
+    %tr
+      %td
+        Name
+      %td
+        Stage
+      %td
+        Subtasks
+      %td
+
   - @tasks.each do |task|
     = render partial: "tasks/task", locals: {task: task}
 

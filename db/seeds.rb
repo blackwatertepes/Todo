@@ -5,3 +5,13 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+Stage.delete_all
+[:design, :dev, :test].each do |stage|
+  Stage.create name: stage
+end
+
+Task.delete_all
+100.times do |i|
+  Task.create name: "Task #{i}", stage: Stage.all.sample
+end
