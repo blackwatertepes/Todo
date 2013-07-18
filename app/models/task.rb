@@ -21,14 +21,6 @@ class Task < ActiveRecord::Base
     self.completed
   end
 
-  def milestone?
-    self.milestone
-  end
-
-  def sprint?
-    self.sprint
-  end
-
   def open?
     reqs.each do |req|
       return false unless req.complete?
@@ -38,13 +30,7 @@ class Task < ActiveRecord::Base
 
   def closed?
     !open?
-  end
-
-  def type
-    return :milestone if milestone?
-    return :sprint if sprint?
-    :task
-  end
+ end
 
   def status
     return :open if open?
