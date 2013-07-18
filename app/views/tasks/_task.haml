@@ -5,10 +5,11 @@
     = link_to task.name, task_complete_path(task.id), class: [task.status]
 
   .controls
-    = form_for @task do |f|
-      = f.number_field :parent_id, value: task.id, type: :hidden
-      = f.text_field :name
-      = f.submit :Create
+    -# = form_for @task do |f|
+    -#   = f.number_field :parent_id, value: task.id, type: :hidden
+    -#   .input-append
+    -#     = f.text_field :name
+    -#     = f.submit :Create, class: :btn
 
     = link_to "UP", task_up_path(task), class: [:btn, "btn-mini"]
     = link_to "Down", task_down_path(task), class: [:btn, "btn-mini"]

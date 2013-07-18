@@ -3,12 +3,16 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .tasks {
+  list-style: none;
+  margin: 0;
+
   .task {
     border: 1px solid #000;
     border-radius: 5px;
     margin: 10px;
-    padding-left: 10px;
+    padding: 0 10px;
     position: relative;
+    line-height: 30px;
 
     a {
       text-decoration: none;
@@ -24,14 +28,11 @@
 
     .controls {
       float: right;
-      position: absolute;
-      top: 0;
-      right: 0;
     }
 
     form.new_task {
       display: inline-block;
-      margin: 0;
+      margin: 10px  0;
     }
   }
 }

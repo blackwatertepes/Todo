@@ -1,9 +1,10 @@
 %h1 To Do
 
-%ol.tasks
+%ul.tasks
   - @tasks.each do |task|
     = render partial: "tasks/task", locals: {task: task}
 
 = form_for @task do |f|
-  = f.text_field :name
-  = f.submit :Create
+  .input-append
+    = f.text_field :name, placeholder: "Add new task"
+    = f.submit :Create, class: :btn
