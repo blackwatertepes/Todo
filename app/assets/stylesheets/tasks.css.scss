@@ -4,6 +4,12 @@
 
 .tasks {
   .task {
+    border: 1px solid #000;
+    border-radius: 5px;
+    margin: 10px;
+    padding-left: 10px;
+    position: relative;
+
     a {
       text-decoration: none;
     }
@@ -22,6 +28,18 @@
     
     .closed {
       opacity: .2;
+    }
+
+    .controls {
+      float: right;
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+
+    form.new_task {
+      display: inline-block;
+      margin: 0;
     }
   }
 }
