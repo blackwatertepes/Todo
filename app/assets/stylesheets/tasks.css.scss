@@ -11,5 +11,17 @@
     .complete {
       text-decoration: line-through;
     }
+
+    .milestone {
+      font-weight: bold;
+    }
+
+    .sprint {
+      font-weight: bold;
+    }
+    
+    .closed {
+      opacity: .2;
+    }
   }
 }

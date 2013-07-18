@@ -4,6 +4,9 @@ class Task < ActiveRecord::Base
 
   attr_accessible :completed, :name, :parent_id
 
+  has_many :prereqs
+  has_many :reqs, through: :prereqs
+
   def complete!
     self.completed = true
     self
@@ -24,5 +27,27 @@ class Task < ActiveRecord::Base
 
   def sprint?
     self.sprint
+  end
+
+  def open?
+    reqs.each do |req|
+      return false unless req.complete?
+    end
+    true
+  end
+
+  def closed?
+    !open?
+  end
+
+  def type
+    return :milestone if milestone?
+    return :sprint if sprint?
+    :task
+  end
+
+  def status
+    return :open if open?
+    :closed
   end
 end

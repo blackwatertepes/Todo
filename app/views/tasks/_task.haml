@@ -1,12 +1,8 @@
 %li.task
-  - if task.milestone?
-    %span (M)
-  - if task.sprint?
-    %span (Sprint)
   - if task.complete?
-    = link_to task.name, task_uncomplete_path(task), class: :complete
+    = link_to task.name, task_uncomplete_path(task), class: [:complete, task.type, task.status]
   - else
-    = link_to task.name, task_complete_path(task.id)
+    = link_to task.name, task_complete_path(task.id), class: [task.type, task.status]
 
   = link_to "UP", task_up_path(task), class: [:btn, "btn-mini"]
   = link_to "Down", task_down_path(task), class: [:btn, "btn-mini"]
