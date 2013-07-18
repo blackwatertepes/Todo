@@ -27,8 +27,6 @@ ActiveRecord::Schema.define(:version => 20130718072548) do
     t.datetime "updated_at", :null => false
     t.string   "ancestry"
     t.integer  "position"
-    t.boolean  "milestone"
-    t.boolean  "sprint"
   end
 
   add_index "tasks", ["ancestry"], :name => "index_tasks_on_ancestry"
