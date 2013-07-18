@@ -4,6 +4,8 @@
   - else
     = link_to task.name, task_complete_path(task.id)
 
+  = link_to "UP", task_up_path(task), class: [:btn, "btn-mini"]
+  = link_to "Down", task_down_path(task), class: [:btn, "btn-mini"]
   = link_to "X", task_path(task), method: :delete, class: [:btn, "btn-mini", :delete]
   = form_for @task do |f|
     = f.number_field :parent_id, value: task.id, type: :hidden
@@ -12,5 +14,5 @@
 
   - if task.has_children?
     %ol
-      - task.children.each do |child_task|
+      - task.children.order(:position).each do |child_task|
         = render partial: "tasks/task", locals: {task: child_task}

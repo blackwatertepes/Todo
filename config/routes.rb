@@ -3,6 +3,8 @@ Todo::Application.routes.draw do
   resources :tasks do
     get :complete
     get :uncomplete
+    get :up
+    get :down
   end
 
   # The priority is based upon order of creation:

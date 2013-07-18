@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   def index
     @task = Task.new
-    @tasks = Task.roots
+    @tasks = Task.order(:position).roots
   end
 end
