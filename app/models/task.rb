@@ -17,4 +17,12 @@ class Task < ActiveRecord::Base
   def complete?
     self.completed
   end
+
+  def milestone?
+    self.milestone
+  end
+
+  def sprint?
+    self.sprint
+  end
 end

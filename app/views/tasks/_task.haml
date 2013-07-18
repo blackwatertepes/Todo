@@ -1,4 +1,8 @@
 %li.task
+  - if task.milestone?
+    %span (M)
+  - if task.sprint?
+    %span (Sprint)
   - if task.complete?
     = link_to task.name, task_uncomplete_path(task), class: :complete
   - else
