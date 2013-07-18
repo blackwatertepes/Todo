@@ -1,5 +1,6 @@
 class Task < ActiveRecord::Base
   has_ancestry orphan_strategy: :destroy
+  acts_as_list
 
   attr_accessible :completed, :name, :parent_id
 
