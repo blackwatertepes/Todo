@@ -11,11 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130718072548) do
+ActiveRecord::Schema.define(:version => 20130718200150) do
 
   create_table "prereqs", :force => true do |t|
     t.integer  "task_id"
     t.integer  "prereq_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "stages", :force => true do |t|
+    t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -27,6 +33,7 @@ ActiveRecord::Schema.define(:version => 20130718072548) do
     t.datetime "updated_at", :null => false
     t.string   "ancestry"
     t.integer  "position"
+    t.integer  "stage_id"
   end
 
   add_index "tasks", ["ancestry"], :name => "index_tasks_on_ancestry"

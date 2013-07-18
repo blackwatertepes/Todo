@@ -2,10 +2,11 @@ class Task < ActiveRecord::Base
   has_ancestry orphan_strategy: :destroy
   acts_as_list
 
-  attr_accessible :completed, :name, :parent_id
+  attr_accessible :completed, :name, :parent_id, :stage_id
 
   has_many :prereqs
   has_many :reqs, through: :prereqs
+  belongs_to :stage
 
   def complete!
     self.completed = true
