@@ -1,8 +1,7 @@
 class Task < ActiveRecord::Base
-  attr_accessible :completed, :name
+  has_ancestry orphan_strategy: :destroy
 
-  has_many :subtasks, class_name: :Task, foreign_key: :parent_id
-  belongs_to :task, foreign_key: :parent_id
+  attr_accessible :completed, :name, :parent_id
 
   def complete!
     self.completed = true
