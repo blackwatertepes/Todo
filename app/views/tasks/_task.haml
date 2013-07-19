@@ -1,15 +1,23 @@
 %tr.task
-  %td
+  %td.span1
     - if task.complete?
-      = link_to task.name, task_uncomplete_path(task), class: [:complete, task.status]
+      %a.btn.btn-mini{href: task_uncomplete_path(task)}
+        %i.icon-refresh
     - else
-      = link_to task.name, task_complete_path(task.id), class: [task.status]
+      %a.btn.btn-mini{href: task_complete_path(task)}
+        %i.icon-ok
 
   %td
+    - if task.complete?
+      = link_to task.name, task_path(task), class: [:complete, task.status]
+    - else
+      = link_to task.name, task_path(task.id), class: [task.status]
+
+  %td.span2
     .controls
       %a.btn.btn-mini{href: task_up_path(task)}
         %i.icon-chevron-up
       %a.btn.btn-mini{href: task_down_path(task)}
         %i.icon-chevron-down
-      %a.btn.btn-mini{href: task_path(task)}
+      %a.btn.btn-mini{href: task_path(task), "data-method" => "delete"}
         %i.icon-remove

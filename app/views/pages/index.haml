@@ -1,16 +1,10 @@
 %h1 ToDo
 
 %table.tasks.table.table-striped
-  %thead
-    %tr
-      %td
-        Name
-      %td
-
   - @tasks.each do |task|
     = render partial: "tasks/task", locals: {task: task}
 
 = form_for @task do |f|
-  .input-append
-    = f.text_field :name, placeholder: "Add new task"
+  .input-append.row-fluid
+    = f.text_field :name, placeholder: "Add new task", class: "span11"
     = f.submit :Create, class: :btn
