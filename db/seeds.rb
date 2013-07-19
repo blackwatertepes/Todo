@@ -12,6 +12,6 @@ Stage.delete_all
 end
 
 Task.delete_all
-100.times do |i|
+10.times do |i|
   Task.create name: "Task #{i}", stage: Stage.all.sample
 end
