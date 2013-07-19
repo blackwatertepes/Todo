@@ -37,4 +37,12 @@ class Task < ActiveRecord::Base
     return :open if open?
     :closed
   end
+
+  def stages
+    return [] unless stage
+    Stage.all.map do |s|
+      status = s.id == stage.id ? :on : :off
+      {name: s.name, status: status}
+    end
+  end
 end

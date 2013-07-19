@@ -3,6 +3,10 @@ class TasksController < ApplicationController
     Task.create params[:task]
     redirect_to :root
   end
+
+  def show
+    @task = Task.find(params[:id])
+  end
   
   def destroy
     Task.find(params[:id]).destroy
