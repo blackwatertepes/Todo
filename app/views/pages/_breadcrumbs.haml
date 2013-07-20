@@ -1,0 +1,5 @@
+%ul.breadcrumb
+  - crumbs.each do |crumb|
+    %li
+      = link_to crumb[:name], crumb[:href]
+      %span.divider /
