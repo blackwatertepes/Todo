@@ -1,11 +1,19 @@
 class TasksController < ApplicationController
   def create
-    Task.create params[:task]
-    redirect_to :root
+    parent_id = params[:task].delete(:parent_id)
+    if parent_id
+      task = Task.find(parent_id)
+      task.children.create params[:task]
+      redirect_to task_path(parent_id)
+    else
+      Task.create params[:task]
+      redirect_to root_path
+    end
   end
 
   def show
     @task = Task.find(params[:id])
+    @tasks = @task.children
   end
   
   def destroy

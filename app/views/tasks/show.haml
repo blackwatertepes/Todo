@@ -1,7 +1,3 @@
 = render partial: "pages/breadcrumbs", locals: {crumbs: crumbs(@task)}
 %h2= @task.name
-- if @task.has_children?
-  %table.tasks.table.table-striped
-    - @task.children.each do |task|
-      = render partial: "tasks/task", locals: {task: task}
-
+= render partial: "tasks/list", locals: {task: @task, tasks: @tasks}
