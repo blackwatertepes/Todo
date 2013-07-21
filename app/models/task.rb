@@ -42,7 +42,9 @@ class Task < ActiveRecord::Base
     return [] unless stage
     Stage.all.map do |s|
       status = s.id == stage.id ? :on : :off
-      {name: s.name, status: status}
+      s.class.module_eval { attr_accessor :status }
+      s.status = status
+      s
     end
   end
 end

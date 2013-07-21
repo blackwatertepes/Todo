@@ -7,9 +7,9 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 Stage.delete_all
-stages = [:design, :dev, :test]
+stages = [{name: :design, color: "#FAA"}, {name: :dev, color: "#FFA"}, {name: :test, color: "#AFA"}]
 stages.map! do |stage|
-  Stage.create name: stage
+  Stage.create name: stage[:name], color: stage[:color]
 end
 
 Task.delete_all

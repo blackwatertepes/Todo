@@ -13,7 +13,7 @@
   %td.span2
     .stages
       - task.stages.each do |s|
-        .stage{class: ["#{s[:name]}", "#{s[:status]}"]}
+        .stage{class: s.status, style: "background-color:#{s.color};"}
 
   %td.span2
     .controls

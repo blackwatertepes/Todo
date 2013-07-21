@@ -40,12 +40,11 @@
         display: inline-block;
         width: 32px;
         height: 16px;
-        background: #CCC;
         border-radius: 2px;
       }
 
-      .on {
-        background: #333;
+      .off {
+        opacity: .1;
       }
     }
 
