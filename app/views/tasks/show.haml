@@ -1,3 +1,13 @@
 = render partial: "pages/breadcrumbs", locals: {crumbs: crumbs(@task)}
-%h2= @task.name
+.task-header.row-fluid
+  .span1
+    = render partial: "tasks/complete_btn", locals: {task: @task}
+
+  .span10
+    %h3
+      = render partial: "tasks/name", locals: {task: @task}
+
+  .span1
+    = render partial: "tasks/delete-btn", locals: {task: @task}
+
 = render partial: "tasks/list", locals: {task: @task, tasks: @tasks}

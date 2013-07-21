@@ -2,6 +2,23 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.task-header {
+  margin-bottom: 10px;
+
+  h3 {
+    line-height: 25px;
+    margin: 0;
+    
+    a {
+      text-decoration: none;
+    }
+
+    a.complete {
+      text-decoration: line-through;
+    }
+  }
+}
+
 .tasks {
 
   .task {

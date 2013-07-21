@@ -1,0 +1,6 @@
+- if task.complete?
+  %a.btn.btn-mini{href: task_uncomplete_path(task)}
+    %i.icon-refresh
+- else
+  %a.btn.btn-mini{href: task_complete_path(task)}
+    %i.icon-ok

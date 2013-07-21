@@ -1,17 +1,9 @@
 %tr.task
   %td.span1
-    - if task.complete?
-      %a.btn.btn-mini{href: task_uncomplete_path(task)}
-        %i.icon-refresh
-    - else
-      %a.btn.btn-mini{href: task_complete_path(task)}
-        %i.icon-ok
+    = render partial: "tasks/complete_btn", locals: {task: task}
 
   %td.span3
-    - if task.complete?
-      = link_to task.name, task_path(task), class: [:complete, task.status]
-    - else
-      = link_to task.name, task_path(task.id), class: [task.status]
+    = render partial: "tasks/name", locals: {task: task}
 
   %td.span3
     .subtasks
@@ -29,5 +21,4 @@
         %i.icon-chevron-up
       %a.btn.btn-mini{href: task_down_path(task)}
         %i.icon-chevron-down
-      %a.btn.btn-mini{href: task_path(task), "data-method" => "delete"}
-        %i.icon-remove
+      = render partial: "tasks/delete-btn", locals: {task: task}
