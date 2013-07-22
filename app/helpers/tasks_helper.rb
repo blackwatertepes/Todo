@@ -10,6 +10,7 @@ module TasksHelper
     user = User.find version.whodunnit
     action = "created"
     action = "updated" if version.event == "update"
-    "#{user.first_name} #{user.last_name} #{action} this task #{version.created_at}"
+    time = time_ago_in_words version.created_at
+    "#{user.first_name} #{user.last_name} #{action} this task #{time} ago"
   end
 end
