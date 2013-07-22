@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130722044455) do
+ActiveRecord::Schema.define(:version => 20130722060703) do
 
   create_table "prereqs", :force => true do |t|
     t.integer  "task_id"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(:version => 20130722044455) do
     t.string   "ancestry"
     t.integer  "position"
     t.integer  "stage_id"
+    t.integer  "user_id"
   end
 
   add_index "tasks", ["ancestry"], :name => "index_tasks_on_ancestry"

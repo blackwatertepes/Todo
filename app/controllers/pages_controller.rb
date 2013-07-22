@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
   def index
-    @tasks = Task.order(:position).roots
+    @tasks = current_user.tasks.order(:position).roots
   end
 end
