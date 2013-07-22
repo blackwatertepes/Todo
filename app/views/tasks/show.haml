@@ -11,3 +11,8 @@
     = render partial: "tasks/delete-btn", locals: {task: @task}
 
 = render partial: "tasks/list", locals: {task: @task, tasks: @tasks}
+
+%ul.versions
+  - @task.versions.each do |version|
+    %li
+      = version_desc version

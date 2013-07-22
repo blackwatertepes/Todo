@@ -26,6 +26,7 @@ gem 'jquery-rails'
 gem 'ancestry'
 gem 'acts_as_list'
 gem 'devise'
+gem 'paper_trail'
 
 group :development, :test do
   gem 'better_errors'
