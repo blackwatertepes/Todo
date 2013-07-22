@@ -1,4 +1,6 @@
 Todo::Application.routes.draw do
+  get "comments/create"
+
   devise_for :users
 
   get "pages/index"

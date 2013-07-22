@@ -27,6 +27,7 @@ gem 'ancestry'
 gem 'acts_as_list'
 gem 'devise'
 gem 'paper_trail'
+gem 'acts_as_commentable'
 
 group :development, :test do
   gem 'better_errors'

@@ -12,6 +12,15 @@
 
 = render partial: "tasks/list", locals: {task: @task, tasks: @tasks}
 
+- @task.comments.each do |comment|
+  %p
+    = comment.comment
+
+= form_for Comment.new, url: comments_create_path, method: :get do |f|
+  = f.hidden_field :task_id, value: @task.id
+  = f.text_field :comment
+  = f.submit
+
 %ul.versions
   - @task.versions.each do |version|
     %li
