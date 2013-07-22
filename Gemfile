@@ -25,6 +25,7 @@ end
 gem 'jquery-rails'
 gem 'ancestry'
 gem 'acts_as_list'
+gem 'devise'
 
 group :development, :test do
   gem 'better_errors'

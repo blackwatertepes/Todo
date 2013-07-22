@@ -10,9 +10,24 @@
   <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="navbar-inner">
       <div class="container">
-        <h1>
-          <a href="/">ToDo</a>
-        </h1>
+        <div class="nav pull-left">
+          <h1>
+            <a href="/">ToDo</a>
+          </h1>
+        </div>
+        <% if user_signed_in? %>
+          <div class="nav-collapse collapse">
+            <ul class="nav pull-right">
+              <li>
+                <%= link_to current_user.email, root_path %>
+              </li>
+              <li class="divider-vertical"></li>
+              <li>
+                <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+              </li>
+            </ul>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
