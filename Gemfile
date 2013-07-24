@@ -32,6 +32,7 @@ gem 'acts_as_commentable'
 group :development, :test do
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'faker'
 end
 
 # To use ActiveModel has_secure_password

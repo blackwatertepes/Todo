@@ -6,10 +6,12 @@ class Task < ActiveRecord::Base
 
   attr_accessible :completed, :name, :parent_id, :stage, :user_id
 
-  has_many :prereqs
-  has_many :reqs, through: :prereqs
   belongs_to :stage
   belongs_to :user
+  belongs_to :project
+
+  has_many :prereqs
+  has_many :reqs, through: :prereqs
 
   def complete!
     self.completed = true

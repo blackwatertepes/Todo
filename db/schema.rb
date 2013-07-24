@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130722073906) do
+ActiveRecord::Schema.define(:version => 20130724084813) do
 
   create_table "comments", :force => true do |t|
     t.string   "title",            :limit => 50, :default => ""
@@ -28,12 +28,70 @@ ActiveRecord::Schema.define(:version => 20130722073906) do
   add_index "comments", ["commentable_type"], :name => "index_comments_on_commentable_type"
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
+  create_table "companies", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "employees", :force => true do |t|
+    t.string   "title"
+    t.boolean  "admin"
+    t.integer  "user_id"
+    t.integer  "company_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "employees", ["company_id"], :name => "index_employees_on_company_id"
+  add_index "employees", ["user_id"], :name => "index_employees_on_user_id"
+
+  create_table "managers", :force => true do |t|
+    t.integer  "employee_id"
+    t.integer  "project_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "managers", ["employee_id"], :name => "index_managers_on_employee_id"
+  add_index "managers", ["project_id"], :name => "index_managers_on_project_id"
+
+  create_table "members", :force => true do |t|
+    t.integer  "team_id"
+    t.integer  "employee_id"
+    t.boolean  "leader"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "members", ["employee_id"], :name => "index_members_on_employee_id"
+  add_index "members", ["team_id"], :name => "index_members_on_team_id"
+
   create_table "prereqs", :force => true do |t|
     t.integer  "task_id"
     t.integer  "prereq_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "projects", :force => true do |t|
+    t.string   "name"
+    t.integer  "company_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "projects", ["company_id"], :name => "index_projects_on_company_id"
+
+  create_table "projects_teams", :force => true do |t|
+    t.integer  "project_id"
+    t.integer  "team_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "projects_teams", ["project_id"], :name => "index_projects_teams_on_project_id"
+  add_index "projects_teams", ["team_id"], :name => "index_projects_teams_on_team_id"
 
   create_table "stages", :force => true do |t|
     t.string   "name"
@@ -51,9 +109,19 @@ ActiveRecord::Schema.define(:version => 20130722073906) do
     t.integer  "position"
     t.integer  "stage_id"
     t.integer  "user_id"
+    t.integer  "project_id"
   end
 
   add_index "tasks", ["ancestry"], :name => "index_tasks_on_ancestry"
+
+  create_table "teams", :force => true do |t|
+    t.string   "name"
+    t.integer  "company_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "teams", ["company_id"], :name => "index_teams_on_company_id"
 
   create_table "users", :force => true do |t|
     t.string   "first_name"

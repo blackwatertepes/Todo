@@ -7,4 +7,5 @@ class User < ActiveRecord::Base
   attr_accessible :email, :first_name, :last_name, :password, :password_confirmation
 
   has_many :tasks
+  has_many :employees
 end
