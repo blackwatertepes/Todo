@@ -11,6 +11,21 @@ Todo::Application.routes.draw do
     get :down
   end
 
+  resources :companies do
+    resources :employees
+    resources :projects
+    resources :teams
+  end
+
+  resources :projects do
+    resources :tasks
+    resources :managers, only: [:create, :destroy, :index]
+  end
+
+  resources :teams do
+    resources :members, except: [:show]
+  end
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
