@@ -1,3 +1,19 @@
+# == Schema Information
+#
+# Table name: tasks
+#
+#  id         :integer          not null, primary key
+#  name       :string(255)
+#  completed  :boolean
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  ancestry   :string(255)
+#  position   :integer
+#  stage_id   :integer
+#  user_id    :integer
+#  project_id :integer
+#
+
 class Task < ActiveRecord::Base
   has_ancestry orphan_strategy: :destroy
   acts_as_list

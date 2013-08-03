@@ -30,6 +30,7 @@ gem 'paper_trail'
 gem 'acts_as_commentable'
 gem 'decent_exposure'
 gem 'simple_form'
+gem 'annotate'
 
 group :development, :test do
   gem 'better_errors'
