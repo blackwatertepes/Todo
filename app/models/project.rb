@@ -10,10 +10,10 @@
 #
 
 class Project < ActiveRecord::Base
-  attr_accessible :name
+  attr_accessible :name, :company
 
   belongs_to :company
-  has_many :tasks
-  has_many :managers
+  has_many :tasks, dependent: destroy
+  has_many :managers, dependent: :destroy
   has_and_belongs_to_many :teams
 end

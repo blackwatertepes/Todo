@@ -13,7 +13,7 @@ class Company < ActiveRecord::Base
 
   validates :name, presence: true
 
-  has_many :teams
-  has_many :projects
-  has_many :employees
+  has_many :teams, dependent: :destroy
+  has_many :projects, dependent: :destroy
+  has_many :employees, dependent: :destroy
 end
