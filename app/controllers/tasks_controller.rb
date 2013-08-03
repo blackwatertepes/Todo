@@ -2,7 +2,7 @@ class TasksController < ApplicationController
   def create
     parent_id = params[:task].delete(:parent_id)
     params[:task].merge! user_id: current_user.id
-    if parent_id
+    if parent_id && !parent_id.blank?
       task = Task.find(parent_id)
       task.children.create params[:task]
     else
