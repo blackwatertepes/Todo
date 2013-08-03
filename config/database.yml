@@ -1,7 +1,3 @@
 development:
   adapter: mysql2
   database: todo_development
-
-test:
-  adapter: mysql2
-  database: todo_test
