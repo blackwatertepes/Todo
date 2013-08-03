@@ -20,7 +20,7 @@ class Task < ActiveRecord::Base
   has_paper_trail
   acts_as_commentable
 
-  attr_accessible :completed, :name, :parent_id, :stage, :user_id
+  attr_accessible :completed, :name, :parent_id, :stage, :user_id, :project_id
 
   belongs_to :stage
   belongs_to :user
@@ -28,6 +28,8 @@ class Task < ActiveRecord::Base
 
   has_many :prereqs
   has_many :reqs, through: :prereqs
+
+  scope :root, -> { order(:position).roots }
 
   def complete!
     self.completed = true

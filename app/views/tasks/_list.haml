@@ -6,5 +6,6 @@
 = form_for Task.new do |f|
   .input-append.row-fluid
     = f.hidden_field :parent_id, value: task.id if task
+    = f.hidden_field :project_id, value: project.id if project
     = f.text_field :name, placeholder: "Add new task", class: "span11"
     = f.submit :Create, class: :btn

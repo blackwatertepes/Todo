@@ -10,7 +10,7 @@
   .span1
     = render partial: "tasks/delete-btn", locals: {task: @task}
 
-= render partial: "tasks/list", locals: {task: @task, tasks: @tasks}
+= render partial: "tasks/list", locals: {task: @task, tasks: @tasks, project: nil}
 
 %h4 Comments
 
