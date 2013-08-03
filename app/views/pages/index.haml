@@ -1,4 +1,1 @@
-- @projects.each do |project|
-  %h2
-    == #{project.name} Tasks
-  = render partial: "tasks/list", locals: {task: @task, tasks: project.tasks, project: project}
+= render partial: "tasks/list", locals: {task: @task, tasks: @tasks}

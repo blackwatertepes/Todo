@@ -35,18 +35,4 @@ class User < ActiveRecord::Base
   def current_company_name
     company ? company.name : "Personal"
   end
-
-  def projects
-    if company
-      company.projects
-    else
-      project = Project.new(name: "Personal")
-      project.tasks = personal_tasks.root
-      [project]
-    end
-  end
-
-  def personal_tasks
-    tasks.where(project_id: nil)
-  end
 end
