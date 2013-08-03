@@ -3,3 +3,7 @@
   - companies.each do |company|
     %li
       = company.name
+
+= simple_form_for company do |f|
+  = f.input :name
+  = f.button :submit
