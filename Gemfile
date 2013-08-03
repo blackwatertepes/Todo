@@ -33,10 +33,13 @@ gem 'simple_form'
 gem 'annotate'
 
 group :development, :test do
-  gem 'better_errors'
-  gem 'binding_of_caller'
+  # gem 'better_errors'
+  # gem 'binding_of_caller'
   gem 'faker'
+  gem 'rspec'
   gem 'rspec-rails'
+  gem 'factory_girl_rails'
+  gem 'capybara'
 end
 
 # To use ActiveModel has_secure_password
