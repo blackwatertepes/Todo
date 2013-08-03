@@ -16,6 +16,7 @@ Todo::Application.routes.draw do
     resources :projects
     resources :teams
     get :enter
+    get :leave, on: :collection
   end
 
   resources :projects do

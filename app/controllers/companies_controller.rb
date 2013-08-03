@@ -22,4 +22,13 @@ class CompaniesController < ApplicationController
       redirect_to :back
     end
   end
+
+  def leave
+    current_user.current_company_id = nil
+    if current_user.save
+      redirect_to :back
+    else
+      redirect_to :back
+    end
+  end
 end

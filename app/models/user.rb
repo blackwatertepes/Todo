@@ -31,4 +31,8 @@ class User < ActiveRecord::Base
   has_many :employees
   has_many :companies, through: :employees
   belongs_to :company, foreign_key: :current_company_id
+  
+  def current_company_name
+    company ? company.name : "Personal"
+  end
 end

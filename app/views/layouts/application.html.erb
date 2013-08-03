@@ -21,13 +21,15 @@
               <li>
                 <div class="dropdown">
                   <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                    <%= current_user.company.name %> 
+                    <%= current_user.current_company_name %>
                   </a>
                   <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+                    <li>
+                      <%= link_to "Personal", leave_companies_path %>
                     <% current_user.companies.each do |company| %>
-                      <li><a tabindex="-1" href="#">
+                      <li>
                         <%= link_to company.name, company_enter_path(company) %>
-                      </a></li>
+                      </li>
                     <% end %>
                   </ul>
                 </div>
