@@ -13,4 +13,13 @@ class CompaniesController < ApplicationController
       render :index
     end
   end
+
+  def enter
+    current_user.current_company_id = params[:company_id]
+    if current_user.save
+      redirect_to :back
+    else
+      redirect_to :back
+    end
+  end
 end

@@ -15,6 +15,7 @@ Todo::Application.routes.draw do
     resources :employees
     resources :projects
     resources :teams
+    get :enter
   end
 
   resources :projects do

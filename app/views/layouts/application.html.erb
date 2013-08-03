@@ -19,6 +19,21 @@
           <div class="nav-collapse collapse">
             <ul class="nav pull-right">
               <li>
+                <div class="dropdown">
+                  <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <%= current_user.company.name %> 
+                  </a>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+                    <% current_user.companies.each do |company| %>
+                      <li><a tabindex="-1" href="#">
+                        <%= link_to company.name, company_enter_path(company) %>
+                      </a></li>
+                    <% end %>
+                  </ul>
+                </div>
+              </li>
+              <li class="divider-vertical"></li>
+              <li>
                 <%= link_to current_user.email, root_path %>
               </li>
               <li class="divider-vertical"></li>

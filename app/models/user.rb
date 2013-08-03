@@ -29,4 +29,6 @@ class User < ActiveRecord::Base
 
   has_many :tasks
   has_many :employees
+  has_many :companies, through: :employees
+  belongs_to :company, foreign_key: :current_company_id
 end
