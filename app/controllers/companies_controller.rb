@@ -2,6 +2,8 @@ class CompaniesController < ApplicationController
   expose(:company)
   expose(:companies)
 
+  load_and_authorize_resource
+
   def create
     team = Team.new(name: "Basic", company: company)
     project = Project.new(name: "Basic", company: company)
