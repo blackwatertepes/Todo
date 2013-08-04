@@ -1,11 +1,18 @@
 require 'spec_helper'
 
 describe "Members" do
-  describe "GET /members" do
-    it "works! (now write some real specs)" do
-      # Run the generator again with the --webrat flag if you want to use webrat methods/matchers
-      get members_path
-      response.status.should be(200)
-    end
+  xit "can vote on tasks" do
+  end
+
+  xit "can complete tasks" do
+  end
+
+  xit "can create new tasks" do
+  end
+
+  xit "can not edit teams" do
+  end
+  
+  xit "can not edit projects" do
   end
 end

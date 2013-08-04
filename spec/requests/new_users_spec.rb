@@ -1,11 +1,21 @@
 require 'spec_helper'
 
 describe "NewUsers" do
-  describe "GET /new_users" do
-    it "works! (now write some real specs)" do
-      # Run the generator again with the --webrat flag if you want to use webrat methods/matchers
-      get new_users_path
-      response.status.should be(200)
-    end
+  xit "should be able to create a company" do
+  end
+
+  xit "should be able to create tasks" do
+  end
+
+  xit "should be able to create subtasks" do
+  end
+
+  xit "should be able to create prereqs" do
+  end
+
+  xit "should be able to complete tasks" do
+  end
+  
+  xit "should be able to comment on tasks" do
   end
 end

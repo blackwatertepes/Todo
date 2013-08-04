@@ -1,11 +1,9 @@
 require 'spec_helper'
 
 describe "Managers" do
-  describe "GET /managers" do
-    it "works! (now write some real specs)" do
-      # Run the generator again with the --webrat flag if you want to use webrat methods/matchers
-      get managers_path
-      response.status.should be(200)
-    end
+  xit "can edit teams on projects" do
+  end
+
+  xit "can edit projects" do
   end
 end
