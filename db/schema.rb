@@ -102,9 +102,9 @@ ActiveRecord::Schema.define(:version => 20130803021148) do
 
   create_table "tasks", :force => true do |t|
     t.string   "name"
-    t.boolean  "completed"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.boolean  "completed",  :default => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
     t.string   "ancestry"
     t.integer  "position"
     t.integer  "stage_id"
