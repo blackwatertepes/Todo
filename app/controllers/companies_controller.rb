@@ -1,8 +1,11 @@
 class CompaniesController < ApplicationController
   expose(:company)
-  expose(:companies)
 
   load_and_authorize_resource
+
+  def index
+    @companies = current_user.companies
+  end
 
   def create
     team = Team.new(name: "Basic", company: company)
