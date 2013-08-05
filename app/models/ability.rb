@@ -5,5 +5,4 @@ class Ability
     user ||= User.new
     can :manage, :all
   end
-
 end
