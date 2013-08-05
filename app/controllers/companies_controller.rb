@@ -7,6 +7,12 @@ class CompaniesController < ApplicationController
     @companies = current_user.companies
   end
 
+  def show
+    @employees = company.employees
+    @teams = company.teams
+    @projects = company.projects
+  end
+
   def create
     team = Team.new(name: "Basic", company: company)
     project = Project.new(name: "Basic", company: company)

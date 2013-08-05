@@ -84,10 +84,8 @@ ActiveRecord::Schema.define(:version => 20130803021148) do
   add_index "projects", ["company_id"], :name => "index_projects_on_company_id"
 
   create_table "projects_teams", :force => true do |t|
-    t.integer  "project_id"
-    t.integer  "team_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer "project_id"
+    t.integer "team_id"
   end
 
   add_index "projects_teams", ["project_id"], :name => "index_projects_teams_on_project_id"

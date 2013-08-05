@@ -1,68 +1,80 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
-# 
-puts "Creating me..."
+puts "Creating companies..."
 User.delete_all
-users_me = [{email: "tyler@wargoats.com", first_name: "Tyler", last_name: "Kuhn", password: "password"},{email: "blackwatertepes@gmail.com", first_name: "Black", last_name: "Water", password: "password"}].map do |user|
-   User.create user
- end
+Company.delete_all
+Employee.delete_all
+companies = [
+   {email: "blackwatertepes@gmail.com"},
+   {email: "tyler@wargoats.com", name: "War Goats", admin: true, title: "Founder"},
+   {email: "tyler.kuhn@spongecell.com", name: "Spongecell", admin: false, title: "Developer"}]
+companies.map! do |c|
+   user = User.create(email: c[:email], first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, password: "password")
+   company = Company.create(name: c[:name]) if c[:name]
+
+  if company && c[:admin] && c[:title]
+     employee = Employee.new(admin: c[:admin], title: c[:title], user: user) 
+     company.employees << employee
+  end
+  company
+end
+
+companies.compact!
 
 puts "Creating users..."
 users = []
-10.times do |user|
-  users << User.create(email: Faker::Internet.email, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, password: "password")
-end
-
-puts "Creating companies..."
-Company.delete_all
-companies = [{name: "Wargoats, Inc."}].map do |company|
-  Company.create company
+100.times do |user|
+  users << User.new(email: Faker::Internet.email, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, password: "password")
 end
 
 puts "Creating employees..."
-Employee.delete_all
-employee_titles = ["Software Developer", "Marketing Manager", "Content Producer"]
+employee_titles = ["Software Developer", "Marketing Manager", "Content Producer", "Sales"]
 users.each do |user|
-  company = companies.first
-  company.employees << Employee.create(user: user, title: employee_titles.sample)
+  company = companies.sample
+  company.employees << Employee.new(user: user, title: employee_titles.sample)
 end
 
 puts "Creating teams..."
 Team.delete_all
-teams = [{name: "Officers"}, {name: "Strategy"}, {name: "Engineering"}, {name: "Quality Assurance"}].map do |team|
-  company = companies.first
-  team = Team.new(team)
-  company.teams << team
-  3.times do
-    employee = company.employees.sample
+Member.delete_all
+adjs = ["Services", "Product", "Super"]
+companies.each do |company|
+  teams = ["Strategy", "Engineering", "Quality Assurance"].map do |team|
+    adjs.each do |adj|
+      team = Team.create(name: "#{adj} #{team}", company: company)
+    end
+    team
+  end
+
+  company.employees.each do |employee|
+    team = company.teams.sample
     member = Member.new
     employee.members << member
     team.members << member
   end
-  leader = team.members.sample
-  leader.leader = true
-  leader.save
-  team
+
+  teams.each do |team|
+    leader = team.members.sample
+    leader.leader = true
+    leader.save
+  end
 end
 
 puts "Creating projects..."
 Project.delete_all
 Manager.delete_all
-projects = [{name: "Platform"}, {name: "Dynamic"}, {name: "Marketing"}].map do |project|
-  project = Project.create(project)
-  company = companies.first
-  company.projects << project 
-  employee = company.employees.sample
-  manager = Manager.new
-  employee.managers << manager
-  project.managers << manager
-  # project.teams << teams.sample
-  project
+companies.each do |company|
+  projects = ["Platform", "Dynamic", "Marketing"].map do |project|
+    adjs.each do |adj|
+      project = Project.create(name: "#{adj} #{project}", company: company)
+      employee = company.employees.sample
+      manager = Manager.new
+      employee.managers << manager
+      project.managers << manager
+      company.teams.shuffle.take(3).each do |team|
+        project.teams << team
+      end
+    end
+    project
+  end
 end
 
 puts "Creating stages..."
@@ -71,27 +83,19 @@ stages = [{name: :design, color: "#FAA"},{name: :dev, color: "#FFA"},{name: :tes
   Stage.create stage
 end
 
-puts "Injecting me..."
-me = users_me.first
-company = companies.first
-project = projects.first
-employee = Employee.create(user: me, title: employee_titles.first)
-manager = Manager.new
-company.employees << employee
-employee.managers << manager
-project.managers << manager
-
 puts "Creating tasks..."
-projects.each do |project|
-  10.times do
-    task = Task.new(name: Faker::Lorem.sentence, completed: rand(2), stage: stages.sample)
-    project.tasks << task
+Task.delete_all
+companies.each do |company|
+  company.projects.each do |project|
+    100.times do
+      task = Task.new(name: Faker::Lorem.sentence, completed: rand(2), stage: stages.sample)
+      project.tasks << task
+    end
   end
 end
 
-puts "..."
+puts "and more..."
 # My personal tasks
-Task.delete_all
 [:basic, :completed, :blocked, :tree].each do |task_type|
   ([nil] + stages).each do |stage|
     name = stage ? "#{task_type.capitalize} #{stage.name.capitalize} Task" : "#{task_type.capitalize} Task" 

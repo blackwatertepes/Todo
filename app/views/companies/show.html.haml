@@ -1,2 +1,10 @@
 %h2
   = company.name
+
+%h3
+  Employees
+
+%ul
+  - @employees.each do |employee|
+    %li
+      = employee.user.email
