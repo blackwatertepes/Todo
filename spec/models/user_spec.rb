@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 describe User do
-  let(:user) { create(:user) }
-  let(:company) { create(:company) }
-  let(:project) { create(:project) }
+  let(:user) { build(:user) }
+  let(:company) { build(:company) }
+  let(:project) { build(:project) }
 
   context "without a company" do
     it "returns a default string when the user has no company" do
@@ -19,7 +19,7 @@ describe User do
     end
 
     context "with tasks" do
-      let(:task) { create(:task) }
+      let(:task) { build(:task) }
 
       before(:each) do
         user.tasks << task
@@ -45,14 +45,14 @@ describe User do
     end
 
     context "with a project" do
-      let(:project) { create(:project, company: company) }
+      let(:project) { build(:project, company: company) }
 
       it "returns the poject" do
         user.projects.should include(project)
       end
 
       context "with a task" do
-        let(:task) { create(:task, project: project, user: user) }
+        let(:task) { build(:task, project: project, user: user) }
 
         it "returns no personal tasks" do
           user.tasks.should be_empty

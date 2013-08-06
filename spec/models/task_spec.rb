@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Task do
-  let(:task) { create(:task) }
+  let(:task) { build(:task) }
 
   it "should not be complete" do
     task.complete?.should be_false
@@ -23,8 +23,8 @@ describe Task do
   end
 
   context "with prereq" do
-    let(:pretask) { create(:task) }
-    let(:prereq) { create(:prereq, task: task, req: pretask) }
+    let(:pretask) { build(:task) }
+    let(:prereq) { build(:prereq, task: task, req: pretask) }
 
     xit "should be closed" do
       task.closed?.should be_true
