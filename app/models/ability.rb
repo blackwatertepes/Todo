@@ -5,6 +5,8 @@ class Ability
     user ||= User.new
     can :manage, :all
   end
-#- This should be removed, and placed with git
-#- So should this comment
+
+  def useless
+    puts 'Hello World'
+  end
 end
