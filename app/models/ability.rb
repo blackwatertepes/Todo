@@ -5,8 +5,4 @@ class Ability
     user ||= User.new
     can :manage, :all
   end
-
-  def useless
-    puts 'Hello Foo Bar'
-  end
 end
