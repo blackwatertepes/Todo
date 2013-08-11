@@ -7,6 +7,6 @@ class Ability
   end
 
   def useless
-    return 'hello world'
+    return 'hello'
   end
 end
