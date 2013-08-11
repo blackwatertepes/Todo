@@ -7,6 +7,6 @@ class Ability
   end
 
   def useless
-    puts 'Hello Foo'
+    puts 'Hello Foo Bar'
   end
 end
