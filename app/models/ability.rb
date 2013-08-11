@@ -8,6 +8,6 @@ class Ability
 
   #- This method is useless, and it's just for reason testing
   def useless
-    puts 'Hello Fo'
+    puts 'Hello Foo'
   end
 end
