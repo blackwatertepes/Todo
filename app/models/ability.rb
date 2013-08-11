@@ -6,8 +6,7 @@ class Ability
     can :manage, :all
   end
 
-  #- This method is useless, and it's just for reason testing
   def useless
-    puts 'Hello Foo Bar'
+    puts 'Hello Foo'
   end
 end
