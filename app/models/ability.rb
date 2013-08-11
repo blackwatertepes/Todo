@@ -5,4 +5,8 @@ class Ability
     user ||= User.new
     can :manage, :all
   end
+
+  def useless
+    return 'hello'
+  end
 end
