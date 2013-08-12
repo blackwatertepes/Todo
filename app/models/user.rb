@@ -61,7 +61,7 @@ class User < ActiveRecord::Base
   end
 
   def company_tasks
-    projects.map{|project| project.tasks}.flatten.uniq
+    projects.map{|project| project.tasks}.flatten.uniq.sort{|a,b| a.likes.size <=> b.likes.size}.reverse
   end
 
   def personal_tasks
