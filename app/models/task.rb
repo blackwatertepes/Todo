@@ -62,6 +62,7 @@ class Task < ActiveRecord::Base
   end
 
   def stage_tense(s)
+    return "NA" unless stage
     return "past" if stage.id > s.id
     return "present" if stage.id == s.id
     "future"

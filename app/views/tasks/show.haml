@@ -12,6 +12,13 @@
 
 = render partial: "tasks/list", locals: {task: @task, tasks: @tasks, project: nil}
 
+= form_for Task.new do |f|
+  .input-append.row-fluid
+    = f.hidden_field :parent_id, value: @task.id if @task
+    = f.hidden_field :project_id, value: @project.id if @project
+    = f.text_field :name, placeholder: "Add new task", class: "span11"
+    = f.submit :Create, class: :btn
+
 %h4 Comments
 
 %ul.comments
@@ -33,4 +40,4 @@
 %ul.versions
   - @task.versions.each do |version|
     %li
-      = version_desc version
+      -# = version_desc version
