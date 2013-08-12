@@ -5,15 +5,15 @@
   %td.span3
     = render partial: "tasks/name", locals: {task: task}
 
-  %td.span3
-    .subtasks
-      - task.descendants.count.times do |desc_i|
-        ==.
+  -# %td.span3
+  -#   .subtasks
+  -#     - task.descendants.count.times do |desc_i|
+  -#       ==.
 
   %td.span2
     .stages
-      - task.stages.each do |s|
-        .stage{class: s.status, style: "background-color:#{s.color};"}
+      - @stages.each do |s|
+        .stage{class: task.stage_tense(s), style: "background-color:#{s.color};"}
 
   %td.span2
     .controls

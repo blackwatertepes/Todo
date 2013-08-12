@@ -61,13 +61,9 @@ class Task < ActiveRecord::Base
     :closed
   end
 
-  def stages
-    return [] unless stage
-    Stage.all.map do |s|
-      status = s.id == stage.id ? :on : :off
-      s.class.module_eval { attr_accessor :status }
-      s.status = status
-      s
-    end
+  def stage_tense(s)
+    return "past" if stage.id > s.id
+    return "present" if stage.id == s.id
+    "future"
   end
 end

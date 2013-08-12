@@ -36,14 +36,30 @@ class User < ActiveRecord::Base
     company ? company.name : "Personal"
   end
 
+  def employee
+    company ? employees.by_company(company).first : "NA"
+  end
+
+  def teams
+    company ? employee.teams : "NA"
+  end
+
   def projects
     if company
-      company.projects
+      teams.includes(projects: {tasks: [:stage, :reqs]}).map{|team| team.projects}.flatten.uniq
     else
       project = Project.new(name: "Personal")
       project.tasks = personal_tasks.root
       [project]
     end
+  end
+
+  def current_tasks
+    company ? company_tasks : personal_tasks
+  end
+
+  def company_tasks
+    projects.map{|project| project.tasks}.flatten.uniq
   end
 
   def personal_tasks

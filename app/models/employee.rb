@@ -20,4 +20,6 @@ class Employee < ActiveRecord::Base
   has_many :managers, dependent: :destroy
   has_many :projects, through: :managers
   has_many :teams, through: :members
+
+  scope :by_company, ->(company) { where(company_id: company.id) }
 end

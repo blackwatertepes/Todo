@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
   def index
-    @projects = current_user.projects
+    @stages = Stage.all
   end
 end
