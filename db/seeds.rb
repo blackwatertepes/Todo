@@ -10,7 +10,7 @@ companies.map! do |c|
    user = User.create(email: c[:email], first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, password: "password")
    company = Company.create(name: c[:name]) if c[:name]
 
-  if company && c[:admin] && c[:title]
+  if company
      employee = Employee.new(admin: c[:admin], title: c[:title], user: user) 
      company.employees << employee
   end
