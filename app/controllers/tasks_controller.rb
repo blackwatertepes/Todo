@@ -15,6 +15,7 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
     @tasks = @task.children
     @stages = Stage.all
+    @project = @task.project
   end
   
   def destroy
