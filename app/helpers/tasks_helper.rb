@@ -7,10 +7,15 @@ module TasksHelper
   end
 
   def version_desc version
-    user = User.find version.whodunnit
     action = "created"
     action = "updated" if version.event == "update"
     time = time_ago_in_words version.created_at
-    "#{user.first_name} #{user.last_name} #{action} this task #{time} ago"
+
+    if version.whodunnit
+      user = User.find version.whodunnit
+      "#{user.first_name} #{user.last_name} #{action} this task #{time} ago"
+    else
+      "Task was #{action} #{time} ago"
+    end
   end
 end
