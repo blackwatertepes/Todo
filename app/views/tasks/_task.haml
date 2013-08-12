@@ -5,7 +5,7 @@
   %td.span1
     = render partial: "tasks/like", locals: {task: task}
 
-  %td.span5
+  %td.span6
     = render partial: "tasks/name", locals: {task: task}
 
   %td.span1
@@ -17,10 +17,6 @@
       - @stages.each do |s|
         .stage{class: task.stage_tense(s), style: "background-color:#{s.color};"}
 
-  %td.span2
+  %td.span1
     .controls
-      %a.btn.btn-mini{href: task_up_path(task)}
-        %i.icon-chevron-up
-      %a.btn.btn-mini{href: task_down_path(task)}
-        %i.icon-chevron-down
       = render partial: "tasks/delete-btn", locals: {task: task}
