@@ -5,10 +5,10 @@
   %td.span3
     = render partial: "tasks/name", locals: {task: task}
 
-  -# %td.span3
-  -#   .subtasks
-  -#     - task.descendants.count.times do |desc_i|
-  -#       ==.
+  %td.span3
+    .subtasks
+      - task.descendants.count.times do |desc_i|
+        ==.
 
   %td.span2
     .stages
