@@ -19,6 +19,7 @@ class Task < ActiveRecord::Base
   acts_as_list
   has_paper_trail
   acts_as_commentable
+  acts_as_votable
 
   attr_accessible :completed, :name, :parent_id, :stage, :user_id, :project_id
 

@@ -27,6 +27,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   attr_accessible :email, :first_name, :last_name, :password, :password_confirmation, :remember_me
 
+  acts_as_voter
+
   has_many :tasks
   has_many :employees
   has_many :companies, through: :employees

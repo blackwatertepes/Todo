@@ -9,6 +9,7 @@ Todo::Application.routes.draw do
     get :uncomplete
     get :up
     get :down
+    get :like
   end
 
   resources :companies do

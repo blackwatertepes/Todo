@@ -1,0 +1,9 @@
+.btn-group
+  %a.btn.btn-mini.disabled
+    = task.likes.size
+  - if current_user.voted_on?(task)
+    %a.btn.btn-mini.disabled{href: ""}
+      %i.icon-heart
+  - else
+    %a.btn.btn-mini{href: task_like_path(task)}
+      %i.icon-heart

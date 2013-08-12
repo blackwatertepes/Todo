@@ -2,13 +2,15 @@
   %td.span1
     = render partial: "tasks/complete_btn", locals: {task: task}
 
-  %td.span3
+  %td.span1
+    = render partial: "tasks/like", locals: {task: task}
+
+  %td.span5
     = render partial: "tasks/name", locals: {task: task}
 
-  %td.span3
-    .subtasks
-      - task.descendants.count.times do |desc_i|
-        ==.
+  %td.span1
+    .subtasks.badge
+      = task.descendants.count
 
   %td.span2
     .stages

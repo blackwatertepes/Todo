@@ -51,4 +51,10 @@ class TasksController < ApplicationController
     @task.move_lower
     redirect_to :back
   end
+
+  def like
+    @task = Task.find(params[:task_id])
+    @task.liked_by current_user
+    redirect_to :back
+  end
 end

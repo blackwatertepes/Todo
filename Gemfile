@@ -32,6 +32,7 @@ gem 'decent_exposure'
 gem 'simple_form'
 gem 'annotate'
 gem 'cancan'
+gem 'acts_as_votable'
 
 group :development, :test do
   # gem 'better_errors'
