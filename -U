@@ -1,5 +1,0 @@
-<h1>To Do</h1>
-
-<%- @tasks.each do |task| %>
-
-<% end %>
