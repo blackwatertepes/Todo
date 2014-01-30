@@ -24,9 +24,12 @@ describe Task do
 
   context "with prereq" do
     let(:pretask) { build(:task) }
-    let(:prereq) { build(:prereq, task: task, req: pretask) }
 
-    xit "should be closed" do
+    before(:each) do
+      task.reqs << pretask
+    end
+
+    it "should be closed" do
       task.closed?.should be_true
     end
 

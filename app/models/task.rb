@@ -49,7 +49,7 @@ class Task < ActiveRecord::Base
 
   def open?
     reqs.each do |req|
-      return false if req.open?
+      return false unless req.complete?
     end
     true
   end
