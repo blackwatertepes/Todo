@@ -1,7 +1,7 @@
 development:
-  adapter: mysql2
+  adapter: postgresql
   database: todo_development
 
 test:
-  adapter: mysql2
+  adapter: postgresql
   database: todo_test

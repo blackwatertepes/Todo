@@ -22,6 +22,7 @@ describe User do
       let(:task) { build(:task) }
 
       before(:each) do
+        user.save
         user.tasks << task
       end
 
@@ -36,6 +37,8 @@ describe User do
   end
 
   context "with a company" do
+    let(:employee) { create(:employee, {user: user, company: company}) }
+
     before(:each) do
       user.company = company
     end
@@ -45,7 +48,13 @@ describe User do
     end
 
     context "with a project" do
-      let(:project) { build(:project, company: company) }
+      let(:project) { create(:project, company: company) }
+      let(:team) { create(:team, company: company) }
+
+      before(:each) do
+        team.employees << employee
+        project.teams << team
+      end
 
       it "returns the poject" do
         user.projects.should include(project)
