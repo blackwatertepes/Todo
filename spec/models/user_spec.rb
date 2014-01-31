@@ -33,6 +33,14 @@ describe User do
       it "return 1 task in personal tasks" do
         user.personal_tasks.should include(task)
       end
+
+      context "with subtasks" do
+        let(:subtask) { create(:task, user: user, parent: task) }
+
+        it "returns the root tasks" do
+          user.personal_tasks.should_not include(subtask)
+        end
+      end
     end
   end
 

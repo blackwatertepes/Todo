@@ -65,6 +65,6 @@ class User < ActiveRecord::Base
   end
 
   def personal_tasks
-    tasks.where(project_id: nil, completed: false)
+    tasks.where(project_id: nil, completed: false, ancestry: nil)
   end
 end
