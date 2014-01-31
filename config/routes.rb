@@ -3,7 +3,8 @@ Todo::Application.routes.draw do
 
   devise_for :users
 
-  get "pages/index"
+  get "search", controller: "pages"
+
   resources :tasks do
     get :complete
     get :uncomplete
