@@ -33,6 +33,8 @@ gem 'simple_form'
 gem 'annotate'
 gem 'cancan'
 gem 'acts_as_votable'
+gem 'elasticsearch-model', git: 'git://github.com/elasticsearch/elasticsearch-rails.git'
+gem 'elasticsearch-rails', git: 'git://github.com/elasticsearch/elasticsearch-rails.git'
 
 group :development, :test do
   # gem 'better_errors'
