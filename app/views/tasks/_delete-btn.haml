@@ -1,2 +1,6 @@
-%a.btn.btn-mini{href: task_path(task), "data-method" => "delete"}
-  %i.icon-remove
+- if task.has_children?
+	%a.btn.btn-mini{href: task_path(task), data: {method: "delete", confirm: "This task has #{task.children.count} subtasks."}}
+		%i.icon-remove
+- else
+	%a.btn.btn-mini{href: task_path(task), data: {method: "delete"}}
+		%i.icon-remove
