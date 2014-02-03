@@ -60,6 +60,10 @@ class User < ActiveRecord::Base
     company ? company_tasks : personal_tasks
   end
 
+  def archived_tasks
+    tasks.where(project_id: nil, completed: true, ancestry: nil)
+  end
+
   def company_tasks
     projects.map{|project| project.tasks}.flatten.uniq.sort{|a,b| a.likes.size <=> b.likes.size}.reverse
   end

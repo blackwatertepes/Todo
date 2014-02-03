@@ -15,8 +15,7 @@
 #
 
 class Task < ActiveRecord::Base
-  include Elasticsearch::Model
-  include Elasticsearch::Model::Callbacks
+  searchkick
   
   has_ancestry orphan_strategy: :destroy
   acts_as_list

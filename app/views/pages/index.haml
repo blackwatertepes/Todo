@@ -1,10 +1,12 @@
-- if current_user.company
-  = render partial: "tasks/list", locals: {task: @task, tasks: @tasks, project: nil}
-- else
-  = render partial: "tasks/list", locals: {task: @task, tasks: @tasks, project: nil}
+%h4 Active Tasks
+= render partial: "tasks/list", locals: {task: @task, tasks: @tasks, project: nil}
 
+- unless current_user.company
   = form_for Task.new do |f|
     .input-append.row-fluid
       = f.hidden_field :parent_id, value: task.id if @task
       = f.text_field :name, placeholder: "Add new task", class: "span11"
       = f.submit :Create, class: :btn
+
+%h4 Archived Tasks
+= render partial: "tasks/list", locals: {task: @task, tasks: @archived_tasks, project: nil}

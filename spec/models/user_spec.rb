@@ -41,6 +41,22 @@ describe User do
           user.personal_tasks.should_not include(subtask)
         end
       end
+
+      context "with completed tasks" do
+        let(:completed_task) { build(:task, completed: true) }
+
+        before(:each) do
+          user.tasks << completed_task
+        end
+
+        it "returns no archived task" do
+          user.current_tasks.should_not include(completed_task)
+        end
+
+        it "returns 1 archived task" do
+          user.archived_tasks.should include(completed_task)
+        end
+      end
     end
   end
 
