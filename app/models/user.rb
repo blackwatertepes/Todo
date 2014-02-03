@@ -51,7 +51,7 @@ class User < ActiveRecord::Base
       teams.includes(projects: {tasks: [:stage, :reqs]}).map{|team| team.projects}.flatten.uniq
     else
       project = Project.new(name: "Personal")
-      project.tasks = personal_tasks.root
+      project.tasks = personal_tasks
       [project]
     end
   end
@@ -61,7 +61,7 @@ class User < ActiveRecord::Base
   end
 
   def archived_tasks
-    tasks.where(project_id: nil, completed: true, ancestry: nil)
+    personal_tasks.where(completed: true).root
   end
 
   def company_tasks
@@ -69,6 +69,6 @@ class User < ActiveRecord::Base
   end
 
   def personal_tasks
-    tasks.where(project_id: nil, completed: false, ancestry: nil)
+    tasks.where(project_id: nil).root
   end
 end
