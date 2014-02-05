@@ -6,8 +6,9 @@ class PagesController < ApplicationController
   end
 
   def search
-  	tasks = Task.search(params[:term]).records.map{|task| task.name}
-  	puts tasks.to_json
+  	tasks = Task.search(params[:term]).results.map do |task|
+  		{name: task.name}
+  	end
   	render json: tasks.to_json
   end
 end
