@@ -61,7 +61,7 @@ class User < ActiveRecord::Base
   end
 
   def archived_tasks
-    personal_tasks.where(completed: true).root
+    personal_tasks.where(completed: true, ancestry: nil)
   end
 
   def company_tasks
@@ -69,6 +69,6 @@ class User < ActiveRecord::Base
   end
 
   def personal_tasks
-    tasks.where(project_id: nil).root
+    tasks.where(project_id: nil, ancestry: nil)
   end
 end

@@ -31,7 +31,6 @@ class Task < ActiveRecord::Base
   has_many :reqs, through: :prereqs
 
   default_scope where(completed: false).order(:position)
-  scope :root, -> { order(:position).roots }
 
   def complete!
     self.completed = true
