@@ -15,8 +15,6 @@
 #
 
 class Task < ActiveRecord::Base
-  searchkick
-  
   has_ancestry orphan_strategy: :destroy
   acts_as_list
   has_paper_trail
