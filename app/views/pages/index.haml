@@ -1,3 +1,7 @@
+= pie_chart [["Football", 10], ["Basketball", 5]], library: {backgroundColor: "#eee"}
+= pie_chart [["Football", 10], ["Basketball", 5]], library: {backgroundColor: "#eee", fontName: "courier new"}
+= pie_chart [["Football", 10], ["Basketball", 5]], {font_family: "courier new", library: {backgroundColor: "#eee"}}
+
 %h4 Active Tasks
 = render partial: "tasks/list", locals: {task: @task, tasks: @tasks, project: nil}
 

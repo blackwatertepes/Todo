@@ -1,3 +1,8 @@
+PATH
+  remote: lib/chartkick
+  specs:
+    chartkick (1.2.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -75,6 +80,8 @@ GEM
       railties (>= 3.0.0)
     faker (1.1.2)
       i18n (~> 0.5)
+    groupdate (1.0.4)
+      activerecord (>= 3.0.0)
     haml (4.0.2)
       tilt
     haml-rails (0.4)
@@ -186,11 +193,13 @@ DEPENDENCIES
   bootstrap-sass (~> 2.3.2)
   cancan
   capybara
+  chartkick!
   coffee-rails (~> 3.2.1)
   decent_exposure
   devise
   factory_girl_rails
   faker
+  groupdate
   haml-rails
   jquery-rails
   paper_trail

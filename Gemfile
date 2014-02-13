@@ -33,6 +33,8 @@ gem 'simple_form'
 gem 'annotate'
 gem 'cancan'
 gem 'acts_as_votable'
+gem 'chartkick', path: 'lib/chartkick'
+gem 'groupdate'
 
 group :development, :test do
   # gem 'better_errors'
